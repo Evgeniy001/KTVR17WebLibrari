@@ -113,7 +113,7 @@ public class Secure extends HttpServlet {
                 sl.addRoleToUser(ur);
             }
             if(deleteButton != null){
-                sl.deleteRoleToUser(ur.getReader());
+                sl.deleteRoleToUser(ur);
             }
                 
             List<Reader> newListUsers = readerFacade.findAll();
