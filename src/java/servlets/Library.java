@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import secure.EncriptPass;
 import session.BookFacade;
 import session.HistoryFacade;
 import session.ReaderFacade;
@@ -85,7 +86,10 @@ public class Library extends HttpServlet {
               request.getRequestDispatcher(PageReturner.getPage("welcome")).forward(request, response);
               break;
             }
-            Reader reader = new Reader(name, surname, phone, city, login, password1);
+            EncriptPass ep = new EncriptPass();
+            String salts = ep.createSalts();
+            String encriptPass = ep.setEncriptPass(password1,salts);
+            Reader reader = new Reader(name, surname, phone, city, login, encriptPass,salts);
             readerFacade.create(reader);
             request.setAttribute("reader", reader);
             request.getRequestDispatcher(PageReturner.getPage("welcome")).forward(request, response);

@@ -40,6 +40,7 @@ public class Reader {
         this.city = city;
         this.login = login;
         this.password = password;
+        this.salts = salts;
     }
 
    

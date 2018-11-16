@@ -63,6 +63,7 @@ public class Secure extends HttpServlet {
                 request.getRequestDispatcher(PageReturner.getPage("showLogin")).forward(request, response);
                 break;
             }
+            EncriptPass 
             if(password.equals(regUser.getPassword())){
                 HttpSession session = request.getSession(true);
                 session.setAttribute("regUser", regUser);
